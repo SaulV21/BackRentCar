@@ -19,7 +19,7 @@ public class ClaseAutomovil implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_clase",length = 8)
-    private Integer id_clase;
+    private Long id_clase;
     @Column(name="nombre", nullable=false, length = 50, unique=false)
     private String nombre;
 

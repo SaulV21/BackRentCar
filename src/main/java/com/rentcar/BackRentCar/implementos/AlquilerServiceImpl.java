@@ -9,15 +9,15 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AlquilerServiceImpl extends GenericServiceImpl<Alquiler, Integer> implements AlquilerServicio {
+public class AlquilerServiceImpl extends GenericServiceImpl<Alquiler, Long> implements AlquilerServicio {
     @Autowired
     AlquilerRepositorio alquilerRepositorio;
     @Override
-    public CrudRepository<Alquiler, Integer> getDao() {
+    public CrudRepository<Alquiler, Long> getDao() {
         return alquilerRepositorio;
     }
 
-    public Alquiler findByAlquiler(Integer id_alquiler){
+    public Alquiler findByAlquiler(Long id_alquiler){
         return alquilerRepositorio.findByAlquiler(id_alquiler);
     }
 }

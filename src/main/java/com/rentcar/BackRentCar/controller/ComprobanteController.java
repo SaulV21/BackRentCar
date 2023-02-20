@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api")
-public class CompobanteController {
+public class ComprobanteController {
     @Autowired
     ComprobanteService compserv;
 
@@ -34,7 +34,7 @@ public class CompobanteController {
     }
 
     @GetMapping("/buscarcomp/{cod_comp}")
-    public ResponseEntity<Comprobante> buscarComp(@PathVariable("cod_comp") Integer cod_comp){
+    public ResponseEntity<Comprobante> buscarComp(@PathVariable("cod_comp") Long cod_comp){
         try {
             return  new ResponseEntity<>(compserv.findById(cod_comp), HttpStatus.OK);
         }catch (Exception e){
@@ -53,7 +53,7 @@ public class CompobanteController {
     }
 
     @DeleteMapping("/deletecomp/{cod_comp}")
-    public ResponseEntity<?> borrarComp(@PathVariable("cod_comp") Integer cod_comp) {
+    public ResponseEntity<?> borrarComp(@PathVariable("cod_comp") Long cod_comp) {
         try {
             compserv.delete(cod_comp);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -65,7 +65,7 @@ public class CompobanteController {
     }
 
     @PutMapping("/updatecomp/{cod_comp}")
-    public ResponseEntity<Comprobante> updateComp(@RequestBody Comprobante compro, @PathVariable("cod_comp") Integer cod_comp){
+    public ResponseEntity<Comprobante> updateComp(@RequestBody Comprobante compro, @PathVariable("cod_comp") Long cod_comp){
         Comprobante co =compserv.findById(cod_comp);
 
         if(co == null){

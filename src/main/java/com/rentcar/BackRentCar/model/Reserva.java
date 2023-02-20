@@ -19,8 +19,8 @@ public class Reserva implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name="cod_resv", nullable=false, length = 8, unique=false)
-    private Integer cod_reserva;
+    @Column(name="cod_reserva", nullable=false, length = 8, unique=false)
+    private Long cod_reserva;
     @Column(name="horareservarealizad", nullable=false, length = 45, unique=false)
     private Date horareservarealizad;
     private Date fecha_iniresv;

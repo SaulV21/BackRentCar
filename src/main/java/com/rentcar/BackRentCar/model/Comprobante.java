@@ -16,7 +16,7 @@ public class Comprobante implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cod_comp", length = 8)
-    private Integer cod_comp;
+    private Long cod_comp;
     @Column(name="descripcion", nullable=false, length = 45, unique=false)
     private String descripcion;
     @Column(name="precio", nullable=false, unique=false)

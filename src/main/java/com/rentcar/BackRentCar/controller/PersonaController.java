@@ -36,9 +36,9 @@ public class PersonaController {
     }
 
     @GetMapping("/buscarpersona/{id_persona}")
-    public ResponseEntity<Persona> getById(@PathVariable("id_persona") Integer id){
+    public ResponseEntity<Persona> getById(@PathVariable("id_persona") Long id_persona){
         try {
-            return  new ResponseEntity<>(per.findById(id), HttpStatus.OK);
+            return  new ResponseEntity<>(per.findById(id_persona), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -55,9 +55,9 @@ public class PersonaController {
     }
 
     @DeleteMapping("/deleteper/{id_persona}")
-    public ResponseEntity<?> delete(@PathVariable("id_persona") Integer id) {
+    public ResponseEntity<?> deletePerson(@PathVariable("id_persona") Long id_persona) {
         try {
-            per.delete(id);
+            per.delete(id_persona);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (DataIntegrityViolationException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al eliminar a la persona");
@@ -67,8 +67,8 @@ public class PersonaController {
     }
 
     @PutMapping("/updateper/{id_persona}")
-    public ResponseEntity<Persona> updateClient(@RequestBody Persona prs, @PathVariable("id_persona") Integer id){
-        Persona pe =per.findById(id);
+    public ResponseEntity<Persona> updatePerson(@RequestBody Persona prs, @PathVariable("id_persona") Long id_persona){
+        Persona pe =per.findById(id_persona);
 
         if(pe == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

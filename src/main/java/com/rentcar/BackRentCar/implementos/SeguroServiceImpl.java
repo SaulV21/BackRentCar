@@ -5,14 +5,16 @@ import com.rentcar.BackRentCar.repository.SeguroRepositorio;
 import com.rentcar.BackRentCar.service.SeguroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
-public class SeguroServiceImpl extends  GenericServiceImpl<Seguro, Integer> implements SeguroService {
+@Service
+public class SeguroServiceImpl extends  GenericServiceImpl<Seguro, Long> implements SeguroService {
 
     @Autowired
     SeguroRepositorio seguroRepositorio;
 
     @Override
-    public CrudRepository<Seguro, Integer> getDao() {
+    public CrudRepository<Seguro, Long> getDao() {
         return seguroRepositorio;
     }
 

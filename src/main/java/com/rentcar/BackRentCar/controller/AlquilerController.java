@@ -1,6 +1,8 @@
 package com.rentcar.BackRentCar.controller;
 
 import com.rentcar.BackRentCar.model.Alquiler;
+import com.rentcar.BackRentCar.model.Persona;
+import com.rentcar.BackRentCar.repository.AlquilerRepositorio;
 import com.rentcar.BackRentCar.service.AlquilerServicio;
 import java.util.List;
 import javax.validation.Valid;
@@ -27,7 +29,7 @@ public class AlquilerController {
     @Autowired
     AlquilerServicio alquiserv;
 
-    @GetMapping("/listar")
+    @GetMapping("/listaralquiler")
     public ResponseEntity<List<Alquiler>> listarAlquiler() {
         try {
             return new ResponseEntity<>(alquiserv.findByAll(), HttpStatus.OK);
@@ -38,7 +40,7 @@ public class AlquilerController {
     }
 
     @GetMapping("/buscar/{id_alquiler}")
-    public ResponseEntity<Alquiler> getById(@PathVariable("id_alquiler") Integer id_alquiler){
+    public ResponseEntity<Alquiler> getByIdAlquiler(@PathVariable("id_alquiler") Long id_alquiler){
         try {
             return  new ResponseEntity<>(alquiserv.findById(id_alquiler), HttpStatus.OK);
         }catch (Exception e){
@@ -47,9 +49,9 @@ public class AlquilerController {
     }
 
     @PostMapping("/guardarAlquiler")
-    public ResponseEntity<Alquiler> createReproducion(@RequestBody Alquiler cancion){
+    public ResponseEntity<Alquiler> createAlquiler(@RequestBody Alquiler alq){
         try {
-            return new ResponseEntity<>(alquiserv.save(cancion), HttpStatus.CREATED);
+            return new ResponseEntity<>(alquiserv.save(alq), HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -57,7 +59,7 @@ public class AlquilerController {
     }
 
     @DeleteMapping("/borrarAlquiler/{id_alquiler}")
-    public ResponseEntity<?> deletesong(@PathVariable("id_alquiler") Integer id_alquiler) {
+    public ResponseEntity<?> deletealquiler(@PathVariable("id_alquiler") Long id_alquiler) {
         try {
             alquiserv.delete(id_alquiler);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -66,5 +68,25 @@ public class AlquilerController {
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PutMapping("/updatealq/{id_alquiler}")
+    public ResponseEntity<Alquiler> updateAlq(@RequestBody Alquiler prs, @PathVariable("id_alquiler") Long id_alquiler){
+        Alquiler pe =alquiserv.findById(id_alquiler);
+
+        if(pe == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+            try {
+                pe.setFecha_salida(prs.getFecha_salida());
+                pe.setDocumento_garantia(prs.getDocumento_garantia());
+                pe.setNum_dias_alquiler(prs.getNum_dias_alquiler());
+                pe.setProx_fecha_entrega(prs.getProx_fecha_entrega());
+                return new ResponseEntity<>(alquiserv.save(prs), HttpStatus.CREATED);
+            }catch (Exception e){
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
     }
 }

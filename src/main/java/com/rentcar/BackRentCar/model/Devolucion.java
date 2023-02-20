@@ -20,7 +20,7 @@ public class Devolucion  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name="cod_dv",length = 8)
-    private Integer cod_dv;
+    private Long cod_dv;
 
     private Date fecha_dv;
     @Column(name="lugar_dv", nullable=false, length = 45, unique=false)

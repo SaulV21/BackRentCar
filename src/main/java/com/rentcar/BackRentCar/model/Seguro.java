@@ -16,7 +16,7 @@ public class Seguro  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cod_seguro", length =8)
-    private Integer cod_seguro;
+    private Long cod_seguro;
     @Column(name="nom_seguro", nullable=false, length = 50, unique=false)
     private String nom_seguro;
     @Column(name="precio_seguro", nullable=false, unique=false)

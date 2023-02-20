@@ -15,7 +15,7 @@ public class RegistrarDanio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cod_rgd",  length = 8)
-    private Integer cod_rgd;
+    private Long cod_rgd;
     @Column(name="descripcion", nullable=false, length = 100, unique=false)
     private String descripcion;
     @Column(name="precio", nullable=false, unique=false)

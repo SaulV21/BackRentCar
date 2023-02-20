@@ -8,13 +8,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RolServiceImpl extends  GenericServiceImpl<Rol, Integer> implements RolService {
+public class RolServiceImpl extends  GenericServiceImpl<Rol, Long> implements RolService {
 
     @Autowired
     RolRepositorio rolRepositorio;
 
     @Override
-    public CrudRepository<Rol, Integer> getDao() {
+    public CrudRepository<Rol, Long> getDao() {
         return rolRepositorio;
     }
 

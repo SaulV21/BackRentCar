@@ -36,7 +36,7 @@ public class ClaseAutomovilController {
     }
 
     @GetMapping("/buscarclase/{id_clase}")
-    public ResponseEntity<ClaseAutomovil> getById(@PathVariable("id_clase") Integer id_clase){
+    public ResponseEntity<ClaseAutomovil> getById(@PathVariable("id_clase") Long id_clase){
         try {
             return  new ResponseEntity<>(claseautomovil.findById(id_clase), HttpStatus.OK);
         }catch (Exception e){
@@ -55,7 +55,7 @@ public class ClaseAutomovilController {
     }
 
     @DeleteMapping("/borrarclase/{id_clase}")
-    public ResponseEntity<?> delete(@PathVariable("id_clase") Integer id_clase) {
+    public ResponseEntity<?> delete(@PathVariable("id_clase") Long id_clase) {
         try {
             claseautomovil.delete(id_clase);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -67,7 +67,7 @@ public class ClaseAutomovilController {
     }
 
     @PutMapping("/updateclase/{id_clase}")
-    public ResponseEntity<ClaseAutomovil> updateClient(@RequestBody ClaseAutomovil clauto, @PathVariable("id_clase") Integer id_clase){
+    public ResponseEntity<ClaseAutomovil> updateClient(@RequestBody ClaseAutomovil clauto, @PathVariable("id_clase") Long id_clase){
         ClaseAutomovil ca =claseautomovil.findById(id_clase);
 
         if(ca == null){

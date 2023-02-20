@@ -19,7 +19,7 @@ public class Alquiler  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_alquiler", length = 8)
-    private Integer id_alquiler;
+    private Long id_alquiler;
     @Column(name="num_dias_alquiler", nullable=false, length = 10, unique=false)
     private String num_dias_alquiler;
     @Column(name="fecha_salida", nullable=false)
@@ -34,7 +34,7 @@ public class Alquiler  implements Serializable {
     private Comprobante comprobante;
     @JsonIgnore
     @OneToOne
-    @JoinColumn(name = "cod_resv", referencedColumnName = "cod_resv")
+    @JoinColumn(name = "cod_reserva", referencedColumnName = "cod_reserva")
     private Reserva reserva;
     @JsonIgnore
     @ManyToOne

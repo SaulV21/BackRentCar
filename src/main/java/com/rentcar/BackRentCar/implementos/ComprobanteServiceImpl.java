@@ -8,18 +8,18 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ComprobanteServiceImpl extends GenericServiceImpl<Comprobante, Integer> implements ComprobanteService {
+public class ComprobanteServiceImpl extends GenericServiceImpl<Comprobante, Long> implements ComprobanteService {
 
     @Autowired
     ComprobanteRepositorio comprobanteRepositorio;
 
     @Override
-    public CrudRepository<Comprobante, Integer> getDao() {
+    public CrudRepository<Comprobante, Long> getDao() {
 
         return comprobanteRepositorio;
     }
 
-    public Comprobante buscarComprobante(Integer cod_comp) {
+    public Comprobante buscarComprobante(String cod_comp) {
         return comprobanteRepositorio.findByComprobante(cod_comp);
     }
 

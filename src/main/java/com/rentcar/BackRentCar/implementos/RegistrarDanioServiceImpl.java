@@ -8,13 +8,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegistrarDanioServiceImpl extends  GenericServiceImpl<RegistrarDanio, Integer> implements RegistrarDanioService {
+public class RegistrarDanioServiceImpl extends  GenericServiceImpl<RegistrarDanio, Long> implements RegistrarDanioService {
 
     @Autowired
     RegistrarDanioRepositorio registrarDanioRepositorio;
 
     @Override
-    public CrudRepository<RegistrarDanio, Integer> getDao() {
+    public CrudRepository<RegistrarDanio, Long> getDao() {
         return registrarDanioRepositorio;
     }
 

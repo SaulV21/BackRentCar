@@ -13,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/danio")
 public class RegistrarDanioController {
     @Autowired
     RegistrarDanioService registrarDanioService;

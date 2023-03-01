@@ -24,7 +24,7 @@ import java.util.List;
 
 @CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/alquiler")
 public class AlquilerController {
     @Autowired
     AlquilerServicio alquiserv;

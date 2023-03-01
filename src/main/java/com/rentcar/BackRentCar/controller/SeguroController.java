@@ -13,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/seguro")
 public class SeguroController {
     @Autowired
     SeguroService seguroService;

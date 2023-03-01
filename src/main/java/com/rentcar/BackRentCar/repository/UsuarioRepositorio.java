@@ -8,4 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
     @Query(value = "Select * from usuario c where c.id_usuario = :id_usuario", nativeQuery = true)
     public Alquiler findByUsuario(Long id_usuario);
+    Usuario findBynombreUsuarioAndPassword(String nombreUsuario, String password);
+
+    Usuario findBynombreUsuario(String nombreUsuario);
 }

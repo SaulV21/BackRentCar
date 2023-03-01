@@ -51,13 +51,23 @@ public class ServiceImplUsuario implements IServicesUsuario {
 	@Override
 	public Usuario login(String nombreUsuario, String password) {
 
-		return dao.login(nombreUsuario, password);
+		return dao.findBynombreUsuarioAndPassword(nombreUsuario, password);
 	}
 
 	@Override
 	public boolean porUsername(String nombreUsuario) {
 
 		return dao.porUsername(nombreUsuario);
+	}
+
+	@Override
+	public Usuario findBynombreUsuarioAndPassword(String nombreUsuario, String password) {
+		return dao.findBynombreUsuarioAndPassword(nombreUsuario,password);
+	}
+
+	@Override
+	public Usuario findBynombreUsuario(String nombreUsuario) {
+		return null;
 	}
 
 }

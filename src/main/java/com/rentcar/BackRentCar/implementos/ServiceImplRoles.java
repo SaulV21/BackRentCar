@@ -12,8 +12,7 @@ import java.util.Optional;
 
 
 @Service
-public class ServiceImplRoles  implements IServiceRoles
-{
+public class ServiceImplRoles  implements IServiceRoles {
 
 
 	@Autowired
@@ -52,6 +51,5 @@ public class ServiceImplRoles  implements IServiceRoles
 		
 		return dao.porNombre(nombre_rol);
 	}
-
 	
 }

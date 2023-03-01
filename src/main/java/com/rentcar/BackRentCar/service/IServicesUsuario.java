@@ -23,5 +23,8 @@ public interface IServicesUsuario {
 	Usuario login (String nombreUsuario, String password);
 
 	boolean porUsername(String nombreUsuario);
+	Usuario findBynombreUsuarioAndPassword(String nombreUsuario, String password);
+
+	Usuario findBynombreUsuario(String nombreUsuario);
 
 }

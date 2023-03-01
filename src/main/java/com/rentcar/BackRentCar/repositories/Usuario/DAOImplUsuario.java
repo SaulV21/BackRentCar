@@ -78,5 +78,15 @@ public class DAOImplUsuario  implements IDAOUsuario {
 
 	}
 
+	@Override
+	public Usuario findBynombreUsuarioAndPassword(String nombreUsuario, String password) {
+		return repository.findBynombreUsuarioAndPassword(nombreUsuario,password);
+	}
+
+	@Override
+	public Usuario findBynombreUsuario(String nombreUsuario) {
+		return null;
+	}
+
 
 }

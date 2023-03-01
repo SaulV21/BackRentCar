@@ -22,11 +22,11 @@ public class UsuarioController {
         return service.crear(usuario);
     }
 
-    @RequestMapping(value = "/{idUsuario}", method = RequestMethod.GET)
+    @RequestMapping(value = "bus/{id_rol}", method = RequestMethod.GET)
     @ResponseBody
     @CrossOrigin
-    public Optional<Usuario> porId(@PathVariable Long idUsuario){
-        return service.porId(idUsuario);
+    public Optional<Usuario> porId(@PathVariable Long id_rol){
+        return service.porId(id_rol);
     }
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)

@@ -19,8 +19,6 @@ public class Usuario {
     @Column(unique = true)
     private String nombreUsuario;
     @NotNull
-    private String email;
-    @NotNull
     private String password;
 
     /*@JsonIgnore
@@ -48,10 +46,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombreUsuario, String email, String password, Persona persona, Rol rol) {
+    public Usuario(Long id, String nombreUsuario, String password, Persona persona, Rol rol) {
         this.id = id;
         this.nombreUsuario = nombreUsuario;
-        this.email = email;
         this.password = password;
         this.persona = persona;
         this.rol = rol;

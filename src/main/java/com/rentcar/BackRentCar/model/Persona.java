@@ -62,9 +62,9 @@ public class Persona implements Serializable {
     }
 
     //@JsonIgnore
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "id", referencedColumnName = "id")
-    private Usuario usuario;
+    private Usuario usuario;*/
 
    // @JsonIgnore
    /* @OneToMany(mappedBy="persona")

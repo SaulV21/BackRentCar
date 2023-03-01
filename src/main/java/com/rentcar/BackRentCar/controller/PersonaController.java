@@ -81,8 +81,6 @@ public class PersonaController {
                 pe.setTelefono(prs.getTelefono());
                 pe.setCorreo(prs.getCorreo());
                 pe.setEdad(prs.getEdad());
-                pe.setUsuario(prs.getUsuario());
-                //pe.setContrasenia(prs.getContrasenia());
                 pe.setCiudad(prs.getCiudad());
                 pe.setGenero(prs.getGenero());
 

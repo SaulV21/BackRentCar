@@ -83,8 +83,6 @@ public class PersonaController {
                 pe.setEdad(prs.getEdad());
                 pe.setCiudad(prs.getCiudad());
                 pe.setGenero(prs.getGenero());
-
-
                 return new ResponseEntity<>(per.save(prs), HttpStatus.CREATED);
             }catch (Exception e){
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

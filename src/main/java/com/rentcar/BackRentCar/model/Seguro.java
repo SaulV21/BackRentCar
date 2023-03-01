@@ -32,16 +32,12 @@ public class Seguro  implements Serializable {
         this.cod_seguro = cod_seguro;
     }
 
-    public Seguro(Long cod_seguro, String nom_seguro, Double precio_seguro, Automovil automovil) {
+    public Seguro(Long cod_seguro, String nom_seguro, Double precio_seguro) {
         this.cod_seguro = cod_seguro;
         this.nom_seguro = nom_seguro;
         this.precio_seguro = precio_seguro;
-        this.automovil = automovil;
     }
 
-    // @JsonIgnore
-    @OneToOne(mappedBy="seguro")
-    private Automovil automovil;
 }
 
 

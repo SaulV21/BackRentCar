@@ -28,16 +28,34 @@ public class Alquiler  implements Serializable {
     private Date prox_fecha_entrega;
     @Column(name="documento_garantia", nullable=false, length = 15, unique=false)
     private String documento_garantia;
-    @JsonIgnore
+    //@JsonIgnore
     @OneToOne
     @JoinColumn(name = "cod_comp", referencedColumnName = "cod_comp")
     private Comprobante comprobante;
-    @JsonIgnore
+    //@JsonIgnore
     @OneToOne
     @JoinColumn(name = "cod_reserva", referencedColumnName = "cod_reserva")
     private Reserva reserva;
-    @JsonIgnore
+   // @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Usuario usuarios;
+
+    public Alquiler() {
+    }
+
+    public Alquiler(Long id_alquiler) {
+        this.id_alquiler = id_alquiler;
+    }
+
+    public Alquiler(Long id_alquiler, String num_dias_alquiler, Date fecha_salida, Date prox_fecha_entrega, String documento_garantia, Comprobante comprobante, Reserva reserva, Usuario usuarios) {
+        this.id_alquiler = id_alquiler;
+        this.num_dias_alquiler = num_dias_alquiler;
+        this.fecha_salida = fecha_salida;
+        this.prox_fecha_entrega = prox_fecha_entrega;
+        this.documento_garantia = documento_garantia;
+        this.comprobante = comprobante;
+        this.reserva = reserva;
+        this.usuarios = usuarios;
+    }
 }

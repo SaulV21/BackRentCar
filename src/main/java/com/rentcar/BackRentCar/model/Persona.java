@@ -41,14 +41,34 @@ public class Persona implements Serializable {
     @Column(name="genero", nullable=false, length = 20, unique=false)
     private String genero;
 
-    @JsonIgnore
+    public Persona() {
+    }
+
+    public Persona(Long id_persona) {
+        this.id_persona = id_persona;
+    }
+
+    public Persona(Long id_persona, String nombre, String apellido, String cedula, String direccion, String telefono, String correo, int edad, String ciudad, String genero) {
+        this.id_persona = id_persona;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.edad = edad;
+        this.ciudad = ciudad;
+        this.genero = genero;
+    }
+
+    //@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Usuario usuario;
 
-    @JsonIgnore
-    @OneToMany(mappedBy="persona")
-    private List<Usuario> usuarios;
+   // @JsonIgnore
+   /* @OneToMany(mappedBy="persona")
+    private List<Usuario> usuarios;*/
 
 
 }

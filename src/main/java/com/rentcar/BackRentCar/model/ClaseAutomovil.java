@@ -26,14 +26,18 @@ public class ClaseAutomovil implements Serializable {
     @Column(name="precio_alquiler_dia", nullable=false, unique=false)
     private double precio_alquiler_dia;
 
-    @JsonIgnore
+   /* @JsonIgnore
     @OneToMany(mappedBy="claseAutomovil")
-    private List<Automovil> automovil;
+    private List<Automovil> automovil;*/
 
     public ClaseAutomovil() {
     }
 
-    public ClaseAutomovil(@NotBlank String nombreClase, @Min(0)double precioAlquilerDia) {
+    public ClaseAutomovil(Long id_clase) {
+        this.id_clase = id_clase;
+    }
+
+    public ClaseAutomovil(String nombreClase, double precioAlquilerDia) {
         this.nombre = nombreClase;
         this.precio_alquiler_dia = precioAlquilerDia;
     }

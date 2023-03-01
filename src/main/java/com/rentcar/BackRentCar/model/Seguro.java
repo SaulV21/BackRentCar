@@ -23,7 +23,23 @@ public class Seguro  implements Serializable {
     private Double precio_seguro;
 
     //Reserva-seguro
-    @JsonIgnore
+
+
+    public Seguro() {
+    }
+
+    public Seguro(Long cod_seguro) {
+        this.cod_seguro = cod_seguro;
+    }
+
+    public Seguro(Long cod_seguro, String nom_seguro, Double precio_seguro, Automovil automovil) {
+        this.cod_seguro = cod_seguro;
+        this.nom_seguro = nom_seguro;
+        this.precio_seguro = precio_seguro;
+        this.automovil = automovil;
+    }
+
+    // @JsonIgnore
     @OneToOne(mappedBy="seguro")
     private Automovil automovil;
 }

@@ -30,18 +30,38 @@ public class Reserva implements Serializable {
 
     //
     //reserva-automovil
-    @JsonIgnore
+ //   @JsonIgnore
+
+
+    public Reserva() {
+    }
+
+    public Reserva(Long cod_reserva) {
+        this.cod_reserva = cod_reserva;
+    }
+
+    public Reserva(Long cod_reserva, Date horareservarealizad, Date fecha_iniresv, Date fecha_finresv, String forma_pago, Automovil automovil, Seguro seguro, Alquiler alquileres) {
+        this.cod_reserva = cod_reserva;
+        this.horareservarealizad = horareservarealizad;
+        this.fecha_iniresv = fecha_iniresv;
+        this.fecha_finresv = fecha_finresv;
+        this.forma_pago = forma_pago;
+        this.automovil = automovil;
+        this.seguro = seguro;
+        this.alquileres = alquileres;
+    }
+
     @ManyToOne
     @JoinColumn(name = "num_placa", referencedColumnName = "num_placa")
     private Automovil automovil;
 
     //seguro-reserva
-    @JsonIgnore
+   // @JsonIgnore
     @OneToOne
     @JoinColumn(name = "cod_seguro", referencedColumnName = "cod_seguro")
     private Seguro seguro;
 
-    @JsonIgnore
+  //  @JsonIgnore
     @OneToOne(mappedBy="reserva")
     private Alquiler alquileres;
 

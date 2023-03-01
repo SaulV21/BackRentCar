@@ -22,13 +22,27 @@ public class RegistrarDanio {
     private Double precio;
     //daños-automovil
 
-    @JsonIgnore
+
+    public RegistrarDanio() {
+    }
+
+    public RegistrarDanio(Long cod_rgd) {
+        this.cod_rgd = cod_rgd;
+    }
+
+    public RegistrarDanio(Long cod_rgd, String descripcion, Double precio) {
+        this.cod_rgd = cod_rgd;
+        this.descripcion = descripcion;
+        this.precio = precio;
+    }
+
+    //@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "num_placa", referencedColumnName = "num_placa")
     private Automovil automovil;
 
-    @JsonIgnore
+   /* @JsonIgnore
     @OneToMany(mappedBy="registrarDanio")
-    private List<Devolucion> devolucion;
+    private List<Devolucion> devolucion;*/
 
 }

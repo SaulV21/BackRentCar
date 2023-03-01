@@ -23,19 +23,39 @@ public class Usuario {
     @NotNull
     private String password;
 
-    @JsonIgnore
+    /*@JsonIgnore
     @OneToMany(mappedBy="usuarios")
-    private List<Automovil> automovil;
-    @JsonIgnore
+    private List<Automovil> automovil;*/
+   // @JsonIgnore
+
+
     @ManyToOne
     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
     private Persona persona;
-    @JsonIgnore
+  //  @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     private Rol rol;
 
-    @JsonIgnore
+   /* @JsonIgnore
     @OneToMany(mappedBy="usuarios")
-    private List<Alquiler> alquiler;
+    private List<Alquiler> alquiler;*/
+
+    public Usuario(Long id) {
+        this.id = id;
+    }
+
+    public Usuario() {
+    }
+
+    public Usuario(Long id, String nombreUsuario, String email, String password, Persona persona, Rol rol) {
+        this.id = id;
+        this.nombreUsuario = nombreUsuario;
+        this.email = email;
+        this.password = password;
+        this.persona = persona;
+        this.rol = rol;
+    }
 }
+
+

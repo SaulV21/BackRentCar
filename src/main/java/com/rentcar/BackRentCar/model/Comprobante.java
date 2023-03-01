@@ -22,11 +22,25 @@ public class Comprobante implements Serializable {
     @Column(name="precio", nullable=false, unique=false)
     private Double precio;
 
-    @JsonIgnore
+  //  @JsonIgnore
     @OneToOne(mappedBy="comprobante")
     private Alquiler alquiler;
 
-//        @JsonIgnore
+    public Comprobante() {
+    }
+
+    public Comprobante(Long cod_comp) {
+        this.cod_comp = cod_comp;
+    }
+
+    public Comprobante(Long cod_comp, String descripcion, Double precio, Alquiler alquiler) {
+        this.cod_comp = cod_comp;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.alquiler = alquiler;
+    }
+
+    //        @JsonIgnore
 //	@OneToOne(mappedBy="comprobante")
 //	private RegistrarDanio comprobantes;
 }

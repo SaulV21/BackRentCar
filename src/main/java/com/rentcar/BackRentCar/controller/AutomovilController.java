@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
 @RestController
 @RequestMapping("/automovil")
 public class AutomovilController {
@@ -36,8 +36,8 @@ public class AutomovilController {
         }
     }
 
-    @PostMapping("/guardarAuto")
-    public ResponseEntity<Automovil> createAuto(@RequestBody Automovil alq){
+    @PostMapping("/crear")
+    public ResponseEntity<Automovil> crearAuto(@RequestBody Automovil alq){
         try {
             return new ResponseEntity<>(automovilService.save(alq), HttpStatus.CREATED);
         }catch (Exception e){

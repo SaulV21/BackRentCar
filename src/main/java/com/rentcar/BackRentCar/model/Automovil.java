@@ -37,6 +37,8 @@ public class Automovil  implements Serializable {
     @Column(name="tipo_vehiculo", nullable=false, length = 50, unique=false)
     private String tipo_vehiculo;
 
+    private String foto;
+
     //Automovil-daños
   /*  @JsonIgnore
     @OneToMany(mappedBy="automovil")
@@ -84,5 +86,20 @@ public class Automovil  implements Serializable {
         this.usuarios = usuarios;
 
 
+    }
+
+    public Automovil(Long idauto, String num_placa, String modelo, String estado, String color, Date anio, String marca, String tipo_vehiculo, String foto, ClaseAutomovil claseAutomovil, Seguro seguro, Usuario usuarios) {
+        this.idauto = idauto;
+        this.num_placa = num_placa;
+        this.modelo = modelo;
+        this.estado = estado;
+        this.color = color;
+        this.anio = anio;
+        this.marca = marca;
+        this.tipo_vehiculo = tipo_vehiculo;
+        this.foto = foto;
+        this.claseAutomovil = claseAutomovil;
+        this.seguro = seguro;
+        this.usuarios = usuarios;
     }
 }

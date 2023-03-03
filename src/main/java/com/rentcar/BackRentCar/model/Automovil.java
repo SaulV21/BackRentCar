@@ -16,39 +16,29 @@ import java.util.List;
 public class Automovil  implements Serializable {
 
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -1469285467119600917L;
     @Id
-
-    @Column(name="idauto", nullable=false, unique=true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idauto",  unique=true)
     private Long idauto;
 
-    @Column(name="num_placa", nullable=false, length = 8, unique=true)
+    @Column(name="num_placa", length = 8, unique=true)
     private String num_placa;
-    @Column(name="modelo", nullable=false, length = 50, unique=false)
+    @Column(name="modelo",  length = 50)
     private String modelo;
-    @Column(name="estado", nullable=false, length = 20, unique=false)
+    @Column(name="estado",  length = 20)
     private String estado;
-    @Column(name="color", nullable=false, length = 25, unique=false)
+    @Column(name="color",  length = 25)
     private String color;
-    @Column(name="anio", nullable=false, length = 4, unique=false)
-    private Date anio;
-    @Column(name="marca", nullable=false, length = 20, unique=false)
+    @Column(name="anio", length = 5)
+    private String anio;
+    @Column(name="marca", length = 20)
     private String marca;
-    @Column(name="tipo_vehiculo", nullable=false, length = 50, unique=false)
+    @Column(name="tipo_vehiculo", length = 50)
     private String tipo_vehiculo;
 
     private String foto;
 
-    //Automovil-daños
-  /*  @JsonIgnore
-    @OneToMany(mappedBy="automovil")
-    private List<RegistrarDanio> danios;
-    //Automovil-reserva
-    @JsonIgnore
-    @OneToMany(mappedBy="automovil")
-    private List<Reserva> reserva;*/
-
-    //@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
     private ClaseAutomovil claseAutomovil;
@@ -72,7 +62,7 @@ public class Automovil  implements Serializable {
         this.idauto = idauto;
     }
 
-    public Automovil(Long idauto, String num_placa, String modelo, String estado, String color, Date anio, String marca, String tipo_vehiculo, ClaseAutomovil claseAutomovil, Seguro seguro, Usuario usuarios) {
+    public Automovil(Long idauto, String num_placa, String modelo, String estado, String color, String anio, String marca, String tipo_vehiculo, ClaseAutomovil claseAutomovil, Seguro seguro, Usuario usuarios) {
         this.idauto = idauto;
         this.num_placa = num_placa;
         this.modelo = modelo;
@@ -88,7 +78,7 @@ public class Automovil  implements Serializable {
 
     }
 
-    public Automovil(Long idauto, String num_placa, String modelo, String estado, String color, Date anio, String marca, String tipo_vehiculo, String foto, ClaseAutomovil claseAutomovil, Seguro seguro, Usuario usuarios) {
+    public Automovil(Long idauto, String num_placa, String modelo, String estado, String color, String anio, String marca, String tipo_vehiculo, String foto, ClaseAutomovil claseAutomovil, Seguro seguro, Usuario usuarios) {
         this.idauto = idauto;
         this.num_placa = num_placa;
         this.modelo = modelo;

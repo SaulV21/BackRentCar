@@ -2,7 +2,9 @@ package com.rentcar.BackRentCar.controller;
 
 import com.rentcar.BackRentCar.model.Alquiler;
 import com.rentcar.BackRentCar.model.Automovil;
+import com.rentcar.BackRentCar.model.ClaseAutomovil;
 import com.rentcar.BackRentCar.service.AutomovilService;
+import com.rentcar.BackRentCar.service.ClaseAutomovilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -11,12 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/automovil")
 public class AutomovilController {
     @Autowired
     AutomovilService automovilService;
+    @Autowired
+    ClaseAutomovilService claseAuto;
     @GetMapping("/listarauto")
     public ResponseEntity<List<Automovil>> listarAutos() {
         try {
@@ -28,7 +32,7 @@ public class AutomovilController {
     }
 
     @GetMapping("/buscarauto/{num_placa}")
-    public ResponseEntity<Automovil> getByPlaca(@PathVariable("num_placa") String num_placa){
+    public ResponseEntity<Automovil> getByPlaca(@PathVariable("idauto") Long num_placa){
         try {
             return  new ResponseEntity<>(automovilService.findById(num_placa), HttpStatus.OK);
         }catch (Exception e){
@@ -36,18 +40,18 @@ public class AutomovilController {
         }
     }
 
-    @PostMapping("/crear")
-    public ResponseEntity<Automovil> crearAuto(@RequestBody Automovil alq){
-        try {
-            return new ResponseEntity<>(automovilService.save(alq), HttpStatus.CREATED);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @PostMapping("/crear/{id_clase}/automoviles")
+    public ResponseEntity<Automovil> crear(@PathVariable(value = "id_clase") Long id_clase, @RequestBody Automovil automovil) {
+        ClaseAutomovil claseautomovil= claseAuto.findById(id_clase);
 
+        automovil.setClaseAutomovil(claseautomovil);
+        Automovil nuevoAutomovil = automovilService.save(automovil);
+        return new ResponseEntity<>(nuevoAutomovil, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/borrarAuto/{num_placa}")
-    public ResponseEntity<?> deleteauto(@PathVariable("num_placa") String num_placa) {
+
+    @DeleteMapping("/borrarAuto/{idauto}")
+    public ResponseEntity<?> deleteauto(@PathVariable("idauto") Long num_placa) {
         try {
             automovilService.delete(num_placa);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -58,8 +62,8 @@ public class AutomovilController {
         }
     }
 
-    @PutMapping("/updateauto/{num_placa}")
-    public ResponseEntity<Automovil> updateAuto(@RequestBody Automovil prs, @PathVariable("num_placa") String num_placa){
+    @PutMapping("/updateauto/{idauto}")
+    public ResponseEntity<Automovil> updateAuto(@RequestBody Automovil prs, @PathVariable("num_placa") Long num_placa){
         Automovil pe =automovilService.findById(num_placa);
 
         if(pe == null){
